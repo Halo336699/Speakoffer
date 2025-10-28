@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试报告 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/report.css">
+</head>
+<body data-page="report">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link">我的面试</a>
+                    <a href="practice.html" class="nav-link">题库练习</a>
+                    <a href="community.html" class="nav-link">社区</a>
+                    <a href="profile.html" class="nav-link">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <a href="profile.html" class="dropdown-item">个人设置</a>
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="report-main">
+        <div class="container">
+            <!-- Report Header -->
+            <div class="report-header">
+                <div class="report-title-section">
+                    <h1 class="report-title">面试表现报告</h1>
+                    <div class="report-meta">
+                        <span class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            <span class="meta-text" id="report-date">2024年1月15日</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">🏫</span>
+                            <span class="meta-text" id="report-school">哈佛大学 · 商科</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span class="meta-text" id="report-duration">12:34</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="overall-score">
+                    <div class="score-circle">
+                        <div class="score-value" id="overall-score">8.5</div>
+                        <div class="score-label">总分</div>
+                    </div>
+                    <div class="score-rating">
+                        <div class="rating-stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star half">★</span>
+                        </div>
+                        <div class="rating-text">优秀表现</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights -->
+            <div class="insights-section">
+                <h2 class="section-title">核心洞察</h2>
+                <div class="insights-grid">
+                    <div class="insight-card positive">
+                        <div class="insight-icon">🎯</div>
+                        <div class="insight-content">
+                            <h3 class="insight-title">表达优势</h3>
+                            <p class="insight-text">语言表达流畅自然，专业词汇使用恰当，逻辑条理清晰</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-card improvement">
+                        <div class="insight-icon">📈</div>
+                        <div class="insight-content">
+                            <h3 class="insight-title">提升空间</h3>
+                            <p class="insight-text">可在跨文化交流和非语言沟通方面进一步加强</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-card neutral">
+                        <div class="insight-icon">🎪</div>
+                        <div class="insight-content">
+                            <h3 class="insight-title">建议重点</h3>
+                            <p class="insight-text">增加具体案例说明，提升回答的说服力和生动性</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Scores -->
+            <div class="scores-section">
+                <h2 class="section-title">详细评分</h2>
+                <div class="scores-grid">
+                    <div class="score-category">
+                        <div class="category-header">
+                            <h3 class="category-title">语言表达</h3>
+                            <div class="category-score">
+                                <span class="score-number" id="score-communication">9.0</span>
+                                <span class="score-max">/10</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="category-details">
+                            <div class="detail-item">
+                                <span class="detail-label">流利度</span>
+                                <span class="detail-score">9.2</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">准确性</span>
+                                <span class="detail-score">8.8</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">词汇量</span>
+                                <span class="detail-score">9.1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-category">
+                        <div class="category-header">
+                            <h3 class="category-title">逻辑思维</h3>
+                            <div class="category-score">
+                                <span class="score-number" id="score-knowledge">8.0</span>
+                                <span class="score-max">/10</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                        <div class="category-details">
+                            <div class="detail-item">
+                                <span class="detail-label">结构清晰</span>
+                                <span class="detail-score">8.3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">论证有力</span>
+                                <span class="detail-score">7.6</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">深度思考</span>
+                                <span class="detail-score">8.1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-category">
+                        <div class="category-header">
+                            <h3 class="category-title">自信表现</h3>
+                            <div class="category-score">
+                                <span class="score-number" id="score-confidence">8.5</span>
+                                <span class="score-max">/10</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="category-details">
+                            <div class="detail-item">
+                                <span class="detail-label">语调自信</span>
+                                <span class="detail-score">8.7</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">眼神交流</span>
+                                <span class="detail-score">8.2</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">姿态自然</span>
+                                <span class="detail-score">8.6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-category">
+                        <div class="category-header">
+                            <h3 class="category-title">文化适应</h3>
+                            <div class="category-score">
+                                <span class="score-number" id="score-cultural">7.5</span>
+                                <span class="score-max">/10</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="category-details">
+                            <div class="detail-item">
+                                <span class="detail-label">文化理解</span>
+                                <span class="detail-score">7.8</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">表达方式</span>
+                                <span class="detail-score">7.2</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">互动技巧</span>
+                                <span class="detail-score">7.5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Analysis -->
+            <div class="questions-section">
+                <h2 class="section-title">问题分析</h2>
+                <div class="questions-list">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <h3 class="question-title">Q1: 自我介绍</h3>
+                            <div class="question-score">
+                                <span class="score">8.8</span>
+                                <span class="max">/10</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <div class="question-text">
+                                "Can you tell me a bit about yourself and why you're interested in studying business?"
+                            </div>
+                            <div class="answer-analysis">
+                                <div class="analysis-section">
+                                    <h4 class="analysis-title">回答亮点</h4>
+                                    <ul class="analysis-list positive">
+                                        <li>结构清晰，从个人背景到专业兴趣层次递进</li>
+                                        <li>举例具体，提到了具体的商业案例和学习经历</li>
+                                        <li>展现了对商业的深度理解和长远规划</li>
+                                    </ul>
+                                </div>
+                                <div class="analysis-section">
+                                    <h4 class="analysis-title">改进建议</h4>
+                                    <ul class="analysis-list improvement">
+                                        <li>可以更多地结合目标学校的特色课程或项目</li>
+                                        <li>建议增加个人独特经历或观点的阐述</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-header">
+                            <h3 class="question-title">Q2: 领导力经验</h3>
+                            <div class="question-score">
+                                <span class="score">9.1</span>
+                                <span class="max">/10</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <div class="question-text">
+                                "Can you share a specific example of a time when you demonstrated leadership skills?"
+                            </div>
+                            <div class="answer-analysis">
+                                <div class="analysis-section">
+                                    <h4 class="analysis-title">回答亮点</h4>
+                                    <ul class="analysis-list positive">
+                                        <li>使用STAR方法，情况-任务-行动-结果结构完整</li>
+                                        <li>具体数据支撑，量化了领导成果</li>
+                                        <li>展现了团队协作和冲突解决能力</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-header">
+                            <h3 class="question-title">Q3: 商业挑战分析</h3>
+                            <div class="question-score">
+                                <span class="score">7.6</span>
+                                <span class="max">/10</span>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <div class="question-text">
+                                "What do you see as the biggest challenges facing the business world today?"
+                            </div>
+                            <div class="answer-analysis">
+                                <div class="analysis-section">
+                                    <h4 class="analysis-title">回答亮点</h4>
+                                    <ul class="analysis-list positive">
+                                        <li>识别了多个重要的商业挑战</li>
+                                        <li>展现了对当前商业环境的关注和理解</li>
+                                    </ul>
+                                </div>
+                                <div class="analysis-section">
+                                    <h4 class="analysis-title">改进建议</h4>
+                                    <ul class="analysis-list improvement">
+                                        <li>可以更深入地分析某一个具体挑战</li>
+                                        <li>建议提供更具体的解决思路或个人见解</li>
+                                        <li>加强与个人经验或学术背景的联系</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback & Recommendations -->
+            <div class="feedback-section">
+                <h2 class="section-title">个性化建议</h2>
+                <div class="feedback-content">
+                    <div class="feedback-category">
+                        <h3 class="feedback-title">
+                            <span class="feedback-icon">🎯</span>
+                            立即改进
+                        </h3>
+                        <ul class="feedback-list" id="feedback-list">
+                            <li class="feedback-item">
+                                <strong>增强文化适应性：</strong>
+                                建议了解更多目标国家的商业文化和教育特色，在回答中体现出对当地文化的理解和适应能力。
+                            </li>
+                            <li class="feedback-item">
+                                <strong>丰富举例内容：</strong>
+                                在回答问题时，可以准备更多具体、生动的个人经历作为例证，增加说服力。
+                            </li>
+                            <li class="feedback-item">
+                                <strong>优化表达节奏：</strong>
+                                适当控制语速，在关键信息处稍作停顿，帮助听众更好地理解和记忆。
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="feedback-category">
+                        <h3 class="feedback-title">
+                            <span class="feedback-icon">📚</span>
+                            长期提升
+                        </h3>
+                        <ul class="feedback-list">
+                            <li class="feedback-item">
+                                <strong>深化专业知识：</strong>
+                                继续关注商业领域的最新发展和理论，建立更深层的专业理解。
+                            </li>
+                            <li class="feedback-item">
+                                <strong>扩展国际视野：</strong>
+                                多关注国际商业案例和跨文化管理实践，提升全球化思维。
+                            </li>
+                            <li class="feedback-item">
+                                <strong>练习即兴表达：</strong>
+                                定期进行即兴演讲练习，提升在压力环境下的表达能力。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Plan -->
+            <div class="action-plan-section">
+                <h2 class="section-title">行动计划</h2>
+                <div class="action-plan">
+                    <div class="plan-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">1</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">本周目标</h3>
+                                <p class="timeline-description">
+                                    针对文化适应性薄弱环节，完成3次相关主题的练习，重点提升跨文化表达能力
+                                </p>
+                                <div class="timeline-actions">
+                                    <a href="practice.html?category=cultural" class="action-link">开始练习</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-marker">2</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">下周计划</h3>
+                                <p class="timeline-description">
+                                    进行一次完整的模拟面试，综合运用改进建议，并邀请朋友或导师给出反馈
+                                </p>
+                                <div class="timeline-actions">
+                                    <a href="interview.html" class="action-link">安排面试</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-marker">3</div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">月度目标</h3>
+                                <p class="timeline-description">
+                                    完成10次不同场景的面试练习，达到平均分数9.0分以上的目标
+                                </p>
+                                <div class="timeline-actions">
+                                    <a href="dashboard.html" class="action-link">查看进度</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Actions -->
+            <div class="report-actions">
+                <div class="actions-grid">
+                    <button onclick="window.print()" class="btn btn-secondary">
+                        <span class="btn-icon">🖨️</span>
+                        打印报告
+                    </button>
+                    <button onclick="shareReport()" class="btn btn-secondary">
+                        <span class="btn-icon">📤</span>
+                        分享报告
+                    </button>
+                    <button onclick="location.href='interview.html'" class="btn btn-primary">
+                        <span class="btn-icon">🎯</span>
+                        再次练习
+                    </button>
+                    <button onclick="location.href='dashboard.html'" class="btn btn-secondary">
+                        <span class="btn-icon">🏠</span>
+                        返回主页
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html>

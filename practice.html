@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题库练习 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/practice.css">
+</head>
+<body data-page="practice">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link">我的面试</a>
+                    <a href="practice.html" class="nav-link active">题库练习</a>
+                    <a href="community.html" class="nav-link">社区</a>
+                    <a href="profile.html" class="nav-link">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <a href="profile.html" class="dropdown-item">个人设置</a>
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="practice-main">
+        <div class="container">
+            <!-- Practice Header -->
+            <div class="practice-header">
+                <div class="header-content-wrapper">
+                    <div class="header-text">
+                        <h1 class="practice-title">题库练习</h1>
+                        <p class="practice-subtitle">精选面试题目，针对性提升你的面试技能</p>
+                    </div>
+                    <div class="practice-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2,500+</span>
+                            <span class="stat-label">精选题目</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">专业领域</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">目标国家</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h2 class="filter-title">筛选题目</h2>
+                    <button class="filter-reset" onclick="resetFilters()">重置筛选</button>
+                </div>
+
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label class="filter-label">面试类型</label>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="university" checked>
+                                <span class="option-text">大学申请</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="scholarship">
+                                <span class="option-text">奖学金</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="visa">
+                                <span class="option-text">签证面试</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="graduate">
+                                <span class="option-text">研究生</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">目标国家</label>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="country" value="美国" checked>
+                                <span class="option-text">美国</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="country" value="英国">
+                                <span class="option-text">英国</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="country" value="加拿大">
+                                <span class="option-text">加拿大</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="country" value="澳大利亚">
+                                <span class="option-text">澳大利亚</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">专业领域</label>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="major" value="商科" checked>
+                                <span class="option-text">商科</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="major" value="工程">
+                                <span class="option-text">工程</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="major" value="计算机科学">
+                                <span class="option-text">计算机</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="major" value="医学">
+                                <span class="option-text">医学</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">难度等级</label>
+                        <div class="difficulty-slider">
+                            <input type="range" id="difficulty" min="1" max="5" value="3" class="slider">
+                            <div class="difficulty-labels">
+                                <span>基础</span>
+                                <span>中等</span>
+                                <span>困难</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" onclick="applyFilters()">应用筛选</button>
+                        <button class="btn btn-secondary" onclick="randomPractice()">随机练习</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Categories -->
+            <div class="categories-section">
+                <h2 class="section-title">热门题目分类</h2>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="selectCategory('self-introduction')">
+                        <div class="category-icon">👋</div>
+                        <div class="category-info">
+                            <h3 class="category-title">自我介绍</h3>
+                            <p class="category-description">个人背景、学术经历、职业规划</p>
+                            <div class="category-meta">
+                                <span class="question-count">128 题</span>
+                                <span class="difficulty-tag easy">基础</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="selectCategory('motivation')">
+                        <div class="category-icon">🎯</div>
+                        <div class="category-info">
+                            <h3 class="category-title">动机意愿</h3>
+                            <p class="category-description">选校原因、专业兴趣、学习目标</p>
+                            <div class="category-meta">
+                                <span class="question-count">156 题</span>
+                                <span class="difficulty-tag medium">中等</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="selectCategory('leadership')">
+                        <div class="category-icon">👑</div>
+                        <div class="category-info">
+                            <h3 class="category-title">领导力</h3>
+                            <p class="category-description">团队管理、项目经验、解决冲突</p>
+                            <div class="category-meta">
+                                <span class="question-count">89 题</span>
+                                <span class="difficulty-tag hard">困难</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="selectCategory('academic')">
+                        <div class="category-icon">📚</div>
+                        <div class="category-info">
+                            <h3 class="category-title">学术背景</h3>
+                            <p class="category-description">研究经历、学术兴趣、专业知识</p>
+                            <div class="category-meta">
+                                <span class="question-count">203 题</span>
+                                <span class="difficulty-tag medium">中等</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="selectCategory('challenges')">
+                        <div class="category-icon">⚡</div>
+                        <div class="category-info">
+                            <h3 class="category-title">挑战困难</h3>
+                            <p class="category-description">克服困难、失败经历、解决问题</p>
+                            <div class="category-meta">
+                                <span class="question-count">94 题</span>
+                                <span class="difficulty-tag hard">困难</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-card" onclick="selectCategory('cultural')">
+                        <div class="category-icon">🌍</div>
+                        <div class="category-info">
+                            <h3 class="category-title">文化适应</h3>
+                            <p class="category-description">跨文化交流、国际视野、多样性</p>
+                            <div class="category-meta">
+                                <span class="question-count">67 题</span>
+                                <span class="difficulty-tag medium">中等</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question List -->
+            <div class="questions-section">
+                <div class="questions-header">
+                    <h2 class="section-title">题目列表</h2>
+                    <div class="questions-controls">
+                        <div class="sort-controls">
+                            <label for="sort-by">排序方式：</label>
+                            <select id="sort-by" class="form-select" onchange="sortQuestions()">
+                                <option value="default">默认排序</option>
+                                <option value="difficulty">按难度</option>
+                                <option value="popularity">按热度</option>
+                                <option value="recent">最近更新</option>
+                            </select>
+                        </div>
+                        <div class="view-controls">
+                            <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
+                                <span class="view-icon">▦</span>
+                            </button>
+                            <button class="view-btn" data-view="list" onclick="changeView('list')">
+                                <span class="view-icon">☰</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions-grid" id="questions-container">
+                    <!-- Questions will be populated by JavaScript -->
+                </div>
+
+                <div class="questions-pagination">
+                    <button class="pagination-btn" onclick="previousPage()" disabled>
+                        <span>‹ 上一页</span>
+                    </button>
+                    <div class="pagination-info">
+                        <span id="pagination-text">第 1 页，共 15 页</span>
+                    </div>
+                    <button class="pagination-btn" onclick="nextPage()">
+                        <span>下一页 ›</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Practice Modal -->
+            <div class="modal hidden" id="practice-modal">
+                <div class="modal-backdrop" onclick="closePracticeModal()"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">快速练习</h3>
+                        <button class="modal-close" onclick="closePracticeModal()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="question-preview">
+                            <div class="question-meta">
+                                <span class="question-category" id="preview-category">自我介绍</span>
+                                <span class="question-difficulty" id="preview-difficulty">中等</span>
+                            </div>
+                            <div class="question-text" id="preview-question">
+                                Tell me about yourself and why you're interested in studying at our university.
+                            </div>
+                            <div class="question-tips">
+                                <h4>回答建议：</h4>
+                                <ul id="preview-tips">
+                                    <li>简洁明了地介绍个人背景</li>
+                                    <li>突出与目标专业相关的经历</li>
+                                    <li>表达对学校的具体了解和兴趣</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" onclick="closePracticeModal()">取消</button>
+                        <button class="btn btn-primary" onclick="startQuestionPractice()">开始练习</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Session Modal -->
+            <div class="modal hidden" id="session-modal">
+                <div class="modal-backdrop"></div>
+                <div class="modal-content practice-session">
+                    <div class="session-header">
+                        <div class="session-info">
+                            <span class="session-category" id="session-category">自我介绍</span>
+                            <span class="session-timer" id="session-timer">00:00</span>
+                        </div>
+                        <button class="session-close" onclick="endPracticeSession()">结束练习</button>
+                    </div>
+
+                    <div class="session-content">
+                        <div class="current-question">
+                            <h3 class="question-title" id="session-question">Tell me about yourself.</h3>
+                        </div>
+
+                        <div class="response-area">
+                            <div class="recording-controls">
+                                <button class="record-btn" id="record-btn" onclick="toggleRecording()">
+                                    <span class="record-icon">🎤</span>
+                                    <span class="record-text">点击开始录音</span>
+                                </button>
+                            </div>
+
+                            <div class="transcript-area">
+                                <div class="transcript-label">实时转录：</div>
+                                <div class="transcript-text" id="session-transcript">
+                                    开始说话，你的回答会在这里显示...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="session-actions">
+                            <button class="btn btn-secondary" onclick="skipQuestion()">跳过这题</button>
+                            <button class="btn btn-primary" onclick="nextQuestion()">下一题</button>
+                        </div>
+                    </div>
+
+                    <div class="session-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="session-progress" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="current-question-number">1</span> / <span id="total-questions">5</span> 题
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/practice.js"></script>
+</body>
+</html>

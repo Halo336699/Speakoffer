@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人设置 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body data-page="profile">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link">我的面试</a>
+                    <a href="practice.html" class="nav-link">题库练习</a>
+                    <a href="community.html" class="nav-link">社区</a>
+                    <a href="profile.html" class="nav-link active">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-header">
+                <h1 class="profile-title">个人设置</h1>
+                <p class="profile-subtitle">管理你的账户信息和偏好设置</p>
+            </div>
+
+            <div class="profile-content">
+                <!-- Profile Form -->
+                <div class="profile-section">
+                    <h2 class="section-title">基本信息</h2>
+                    <form data-form="profile" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">姓名</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="请输入姓名">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">邮箱</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="请输入邮箱" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="targetCountry" class="form-label">目标留学国家</label>
+                                <select id="targetCountry" name="targetCountry" class="form-select">
+                                    <option value="">请选择目标国家</option>
+                                    <option value="美国">美国</option>
+                                    <option value="英国">英国</option>
+                                    <option value="加拿大">加拿大</option>
+                                    <option value="澳大利亚">澳大利亚</option>
+                                    <option value="新加坡">新加坡</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="targetMajor" class="form-label">目标专业</label>
+                                <select id="targetMajor" name="targetMajor" class="form-select">
+                                    <option value="">请选择目标专业</option>
+                                    <option value="商科">商科</option>
+                                    <option value="工程">工程</option>
+                                    <option value="计算机科学">计算机科学</option>
+                                    <option value="医学">医学</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存更改</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

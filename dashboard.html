@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的仪表板 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body data-page="dashboard">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link active">我的面试</a>
+                    <a href="practice.html" class="nav-link">题库练习</a>
+                    <a href="community.html" class="nav-link">社区</a>
+                    <a href="profile.html" class="nav-link">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <a href="profile.html" class="dropdown-item">个人设置</a>
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">欢迎回来，<span data-user-name>学生</span>！</h1>
+                    <p class="welcome-subtitle">继续你的面试准备之旅，向梦想院校更进一步</p>
+                </div>
+                <div class="quick-actions">
+                    <button onclick="startInterview('university', '美国', '商科')" class="btn btn-primary">
+                        <span class="btn-icon">🎯</span>
+                        开始新面试
+                    </button>
+                    <button onclick="viewReport('latest')" class="btn btn-secondary">
+                        <span class="btn-icon">📊</span>
+                        查看最近报告
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎤</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-interviews">12</span>
+                            <span class="stat-label">总面试次数</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="average-score">8.5</span>
+                            <span class="stat-label">平均分数</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="improvement-rate">+15%</span>
+                            <span class="stat-label">进步幅度</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="next-goal">研究生面试</span>
+                            <span class="stat-label">下个目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <!-- Performance Analytics -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">表现分析报告</h2>
+                        <span class="analysis-period">过去30天</span>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="analytics-chart">
+                            <h3 class="chart-title">分数趋势</h3>
+                            <div class="chart-container">
+                                <div class="chart-bars">
+                                    <div class="chart-bar" style="height: 60%" data-value="6.2"><span class="bar-value">6.2</span></div>
+                                    <div class="chart-bar" style="height: 70%" data-value="7.1"><span class="bar-value">7.1</span></div>
+                                    <div class="chart-bar" style="height: 85%" data-value="8.5"><span class="bar-value">8.5</span></div>
+                                    <div class="chart-bar" style="height: 90%" data-value="9.0"><span class="bar-value">9.0</span></div>
+                                    <div class="chart-bar" style="height: 95%" data-value="9.2"><span class="bar-value">9.2</span></div>
+                                </div>
+                                <div class="chart-labels">
+                                    <span>第1周</span>
+                                    <span>第2周</span>
+                                    <span>第3周</span>
+                                    <span>第4周</span>
+                                    <span>本周</span>
+                                </div>
+                            </div>
+                            <div class="chart-summary">
+                                <span class="trend-positive">↗ +48% 提升</span>
+                                <span class="trend-note">表现持续改善</span>
+                            </div>
+                        </div>
+
+                        <div class="analytics-breakdown">
+                            <h3 class="chart-title">能力分布</h3>
+                            <div class="breakdown-items">
+                                <div class="breakdown-item">
+                                    <span class="item-label">语言表达</span>
+                                    <div class="item-progress">
+                                        <div class="item-bar" style="width: 92%"></div>
+                                        <span class="item-value">9.2</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="item-label">逻辑思维</span>
+                                    <div class="item-progress">
+                                        <div class="item-bar" style="width: 78%"></div>
+                                        <span class="item-value">7.8</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="item-label">专业知识</span>
+                                    <div class="item-progress">
+                                        <div class="item-bar" style="width: 95%"></div>
+                                        <span class="item-value">9.5</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="item-label">应变能力</span>
+                                    <div class="item-progress">
+                                        <div class="item-bar" style="width: 83%"></div>
+                                        <span class="item-value">8.3</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="item-label">文化理解</span>
+                                    <div class="item-progress">
+                                        <div class="item-bar" style="width: 71%"></div>
+                                        <span class="item-value">7.1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Goals & Milestones -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">学习目标与里程碑</h2>
+                        <span class="completion-rate">总体完成度: 73%</span>
+                    </div>
+
+                    <div class="milestones-timeline">
+                        <div class="milestone completed">
+                            <div class="milestone-marker"></div>
+                            <div class="milestone-content">
+                                <h4 class="milestone-title">基础面试技能</h4>
+                                <p class="milestone-desc">掌握基本面试礼仪和表达技巧</p>
+                                <div class="milestone-meta">
+                                    <span class="milestone-date">2024年1月5日完成</span>
+                                    <span class="milestone-score">✓ 已完成</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="milestone completed">
+                            <div class="milestone-marker"></div>
+                            <div class="milestone-content">
+                                <h4 class="milestone-title">专业知识准备</h4>
+                                <p class="milestone-desc">商科相关专业知识和案例分析</p>
+                                <div class="milestone-meta">
+                                    <span class="milestone-date">2024年1月12日完成</span>
+                                    <span class="milestone-score">✓ 已完成</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="milestone active">
+                            <div class="milestone-marker"></div>
+                            <div class="milestone-content">
+                                <h4 class="milestone-title">跨文化交流</h4>
+                                <p class="milestone-desc">提升文化适应能力和国际视野</p>
+                                <div class="milestone-meta">
+                                    <span class="milestone-date">预计2024年1月20日</span>
+                                    <span class="milestone-score">🔄 进行中 (68%)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="milestone pending">
+                            <div class="milestone-marker"></div>
+                            <div class="milestone-content">
+                                <h4 class="milestone-title">高级面试策略</h4>
+                                <p class="milestone-desc">掌握高难度问题应对和压力面试</p>
+                                <div class="milestone-meta">
+                                    <span class="milestone-date">预计2024年1月25日</span>
+                                    <span class="milestone-score">⏳ 待开始</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Interviews -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">最近面试记录</h2>
+                        <a href="interview-history.html" class="section-link">查看全部</a>
+                    </div>
+
+                    <div class="interview-list">
+                        <div class="interview-card">
+                            <div class="interview-info">
+                                <div class="interview-type">
+                                    <span class="type-icon">🎓</span>
+                                    <span class="type-text">大学申请面试</span>
+                                </div>
+                                <div class="interview-details">
+                                    <span class="interview-school">哈佛大学 · 商科</span>
+                                    <span class="interview-date">2024年1月15日</span>
+                                </div>
+                            </div>
+                            <div class="interview-score">
+                                <span class="score-number">8.7</span>
+                                <span class="score-label">分</span>
+                            </div>
+                            <div class="interview-actions">
+                                <button onclick="viewReport('interview-1')" class="btn btn-sm btn-secondary">查看报告</button>
+                                <button onclick="startInterview('university', '美国', '商科')" class="btn btn-sm btn-primary">重新练习</button>
+                            </div>
+                        </div>
+
+                        <div class="interview-card">
+                            <div class="interview-info">
+                                <div class="interview-type">
+                                    <span class="type-icon">💼</span>
+                                    <span class="type-text">奖学金面试</span>
+                                </div>
+                                <div class="interview-details">
+                                    <span class="interview-school">斯坦福大学 · 计算机科学</span>
+                                    <span class="interview-date">2024年1月12日</span>
+                                </div>
+                            </div>
+                            <div class="interview-score">
+                                <span class="score-number">9.2</span>
+                                <span class="score-label">分</span>
+                            </div>
+                            <div class="interview-actions">
+                                <button onclick="viewReport('interview-2')" class="btn btn-sm btn-secondary">查看报告</button>
+                                <button onclick="startInterview('scholarship', '美国', '计算机科学')" class="btn btn-sm btn-primary">重新练习</button>
+                            </div>
+                        </div>
+
+                        <div class="interview-card">
+                            <div class="interview-info">
+                                <div class="interview-type">
+                                    <span class="type-icon">🛂</span>
+                                    <span class="type-text">签证面试</span>
+                                </div>
+                                <div class="interview-details">
+                                    <span class="interview-school">美国F1签证</span>
+                                    <span class="interview-date">2024年1月10日</span>
+                                </div>
+                            </div>
+                            <div class="interview-score">
+                                <span class="score-number">7.8</span>
+                                <span class="score-label">分</span>
+                            </div>
+                            <div class="interview-actions">
+                                <button onclick="viewReport('interview-3')" class="btn btn-sm btn-secondary">查看报告</button>
+                                <button onclick="startInterview('visa', '美国', '')" class="btn btn-sm btn-primary">重新练习</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Start -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">快速开始</h2>
+                    </div>
+
+                    <div class="quick-start-grid">
+                        <div class="quick-start-card" onclick="startInterview('university', '', '')">
+                            <div class="card-icon">🎓</div>
+                            <h3 class="card-title">大学申请面试</h3>
+                            <p class="card-description">模拟真实的大学申请面试场景</p>
+                        </div>
+
+                        <div class="quick-start-card" onclick="startInterview('scholarship', '', '')">
+                            <div class="card-icon">💰</div>
+                            <h3 class="card-title">奖学金面试</h3>
+                            <p class="card-description">练习奖学金申请面试技巧</p>
+                        </div>
+
+                        <div class="quick-start-card" onclick="startInterview('visa', '', '')">
+                            <div class="card-icon">🛂</div>
+                            <h3 class="card-title">签证面试</h3>
+                            <p class="card-description">准备留学签证面试问答</p>
+                        </div>
+
+                        <div class="quick-start-card" onclick="startInterview('graduate', '', '')">
+                            <div class="card-icon">🎯</div>
+                            <h3 class="card-title">研究生面试</h3>
+                            <p class="card-description">研究生项目专业面试练习</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracking -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">学习进度</h2>
+                    </div>
+
+                    <div class="progress-cards">
+                        <div class="progress-card">
+                            <div class="progress-header">
+                                <h3 class="progress-title">语言表达</h3>
+                                <span class="progress-score">8.5/10</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <p class="progress-note">表现优秀，继续保持</p>
+                        </div>
+
+                        <div class="progress-card">
+                            <div class="progress-header">
+                                <h3 class="progress-title">逻辑思维</h3>
+                                <span class="progress-score">7.2/10</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                            <p class="progress-note">需要加强逻辑结构</p>
+                        </div>
+
+                        <div class="progress-card">
+                            <div class="progress-header">
+                                <h3 class="progress-title">专业知识</h3>
+                                <span class="progress-score">9.0/10</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <p class="progress-note">专业知识扎实</p>
+                        </div>
+
+                        <div class="progress-card">
+                            <div class="progress-header">
+                                <h3 class="progress-title">文化适应</h3>
+                                <span class="progress-score">6.8/10</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 68%"></div>
+                            </div>
+                            <p class="progress-note">建议多练习跨文化交流</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">个性化推荐</h2>
+                    </div>
+
+                    <div class="recommendations">
+                        <div class="recommendation-card">
+                            <div class="rec-icon">📚</div>
+                            <div class="rec-content">
+                                <h3 class="rec-title">加强逻辑训练</h3>
+                                <p class="rec-description">建议练习结构化回答，使用STAR法则组织答案</p>
+                                <a href="practice.html?category=logic" class="rec-action">开始练习</a>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-card">
+                            <div class="rec-icon">🌍</div>
+                            <div class="rec-content">
+                                <h3 class="rec-title">文化适应练习</h3>
+                                <p class="rec-description">推荐练习美国商科文化相关的面试场景</p>
+                                <a href="practice.html?category=cultural" class="rec-action">开始练习</a>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-card">
+                            <div class="rec-icon">🎯</div>
+                            <div class="rec-content">
+                                <h3 class="rec-title">模拟真实面试</h3>
+                                <p class="rec-description">基于你的目标，建议练习哈佛商学院面试场景</p>
+                                <a href="#" onclick="startInterview('university', '美国', '商科')" class="rec-action">立即开始</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

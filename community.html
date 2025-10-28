@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习社区 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/community.css">
+</head>
+<body data-page="community">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link">我的面试</a>
+                    <a href="practice.html" class="nav-link">题库练习</a>
+                    <a href="community.html" class="nav-link active">社区</a>
+                    <a href="profile.html" class="nav-link">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <a href="profile.html" class="dropdown-item">个人设置</a>
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="community-main">
+        <div class="container">
+            <!-- Community Header -->
+            <div class="community-header">
+                <div class="header-content-wrapper">
+                    <div class="header-text">
+                        <h1 class="community-title">学习社区</h1>
+                        <p class="community-subtitle">与全球留学生分享经验，共同成长</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" onclick="openPostModal()">
+                            <span class="btn-icon">✏️</span>
+                            发表动态
+                        </button>
+                    </div>
+                </div>
+
+                <div class="community-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">15,000+</span>
+                        <span class="stat-label">社区成员</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">8,500+</span>
+                        <span class="stat-label">经验分享</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">25,000+</span>
+                        <span class="stat-label">互动回复</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">成功案例</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="community-content">
+                <!-- Sidebar -->
+                <aside class="community-sidebar">
+                    <!-- Navigation Menu -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">频道</h3>
+                        <nav class="sidebar-nav">
+                            <a href="#" class="sidebar-link active" data-category="all">
+                                <span class="link-icon">🏠</span>
+                                <span class="link-text">全部动态</span>
+                                <span class="link-count">1.2k</span>
+                            </a>
+                            <a href="#" class="sidebar-link" data-category="success">
+                                <span class="link-icon">🎉</span>
+                                <span class="link-text">成功案例</span>
+                                <span class="link-count">256</span>
+                            </a>
+                            <a href="#" class="sidebar-link" data-category="tips">
+                                <span class="link-icon">💡</span>
+                                <span class="link-text">面试技巧</span>
+                                <span class="link-count">485</span>
+                            </a>
+                            <a href="#" class="sidebar-link" data-category="qa">
+                                <span class="link-icon">❓</span>
+                                <span class="link-text">问答求助</span>
+                                <span class="link-count">312</span>
+                            </a>
+                            <a href="#" class="sidebar-link" data-category="resources">
+                                <span class="link-icon">📚</span>
+                                <span class="link-text">资源分享</span>
+                                <span class="link-count">189</span>
+                            </a>
+                        </nav>
+                    </div>
+
+                    <!-- Trending Topics -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">热门话题</h3>
+                        <div class="trending-topics">
+                            <div class="topic-item">
+                                <span class="topic-rank">1</span>
+                                <div class="topic-content">
+                                    <span class="topic-title"># 哈佛商学院面试</span>
+                                    <span class="topic-count">156 讨论</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">2</span>
+                                <div class="topic-content">
+                                    <span class="topic-title"># 英国G5申请经验</span>
+                                    <span class="topic-count">128 讨论</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">3</span>
+                                <div class="topic-content">
+                                    <span class="topic-title"># GMAT备考攻略</span>
+                                    <span class="topic-count">98 讨论</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">4</span>
+                                <div class="topic-content">
+                                    <span class="topic-title"># 签证面试经验</span>
+                                    <span class="topic-count">87 讨论</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <span class="topic-rank">5</span>
+                                <div class="topic-content">
+                                    <span class="topic-title"># 加拿大研究生申请</span>
+                                    <span class="topic-count">76 讨论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Users -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">活跃用户</h3>
+                        <div class="active-users">
+                            <div class="user-item">
+                                <div class="user-avatar">L</div>
+                                <div class="user-info">
+                                    <span class="user-name">李小明</span>
+                                    <span class="user-badge">🎓 斯坦福</span>
+                                </div>
+                                <span class="user-score">1.2k</span>
+                            </div>
+                            <div class="user-item">
+                                <div class="user-avatar">W</div>
+                                <div class="user-info">
+                                    <span class="user-name">王佳佳</span>
+                                    <span class="user-badge">🎓 牛津</span>
+                                </div>
+                                <span class="user-score">956</span>
+                            </div>
+                            <div class="user-item">
+                                <div class="user-avatar">Z</div>
+                                <div class="user-info">
+                                    <span class="user-name">张大伟</span>
+                                    <span class="user-badge">🎓 MIT</span>
+                                </div>
+                                <span class="user-score">843</span>
+                            </div>
+                            <div class="user-item">
+                                <div class="user-avatar">C</div>
+                                <div class="user-info">
+                                    <span class="user-name">陈思思</span>
+                                    <span class="user-badge">🎓 哈佛</span>
+                                </div>
+                                <span class="user-score">721</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="community-feed">
+                    <!-- Filter & Sort -->
+                    <div class="feed-controls">
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="hot">🔥 热门</button>
+                            <button class="filter-tab" data-filter="latest">🕒 最新</button>
+                            <button class="filter-tab" data-filter="following">👥 关注</button>
+                        </div>
+                        <div class="sort-dropdown">
+                            <select class="form-select" onchange="sortPosts(this.value)">
+                                <option value="default">默认排序</option>
+                                <option value="time">按时间</option>
+                                <option value="likes">按点赞</option>
+                                <option value="comments">按评论</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div class="posts-container" id="posts-container">
+                        <!-- Posts will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="load-more-section">
+                        <button class="btn btn-secondary" onclick="loadMorePosts()">
+                            <span class="btn-icon">⬇️</span>
+                            加载更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Creation Modal -->
+        <div class="modal hidden" id="post-modal">
+            <div class="modal-backdrop" onclick="closePostModal()"></div>
+            <div class="modal-content post-modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">发表动态</h3>
+                    <button class="modal-close" onclick="closePostModal()">×</button>
+                </div>
+
+                <form class="post-form" onsubmit="submitPost(event)">
+                    <div class="form-group">
+                        <label for="post-category" class="form-label">分类</label>
+                        <select id="post-category" name="category" class="form-select" required>
+                            <option value="">请选择分类</option>
+                            <option value="success">成功案例</option>
+                            <option value="tips">面试技巧</option>
+                            <option value="qa">问答求助</option>
+                            <option value="resources">资源分享</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-title" class="form-label">标题 *</label>
+                        <input
+                            type="text"
+                            id="post-title"
+                            name="title"
+                            class="form-input"
+                            placeholder="请输入标题..."
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-content" class="form-label">内容 *</label>
+                        <textarea
+                            id="post-content"
+                            name="content"
+                            class="form-textarea"
+                            placeholder="分享你的经验和想法..."
+                            rows="8"
+                            required
+                        ></textarea>
+                        <div class="character-count">
+                            <span id="content-count">0</span> / 2000
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">标签</label>
+                        <div class="tag-input-section">
+                            <input
+                                type="text"
+                                id="tag-input"
+                                placeholder="添加标签..."
+                                onkeypress="handleTagInput(event)"
+                            >
+                            <button type="button" onclick="addTag()" class="add-tag-btn">添加</button>
+                        </div>
+                        <div class="selected-tags" id="selected-tags">
+                            <!-- Tags will be added here -->
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closePostModal()">取消</button>
+                        <button type="submit" class="btn btn-primary">发布动态</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Comment Modal -->
+        <div class="modal hidden" id="comment-modal">
+            <div class="modal-backdrop" onclick="closeCommentModal()"></div>
+            <div class="modal-content comment-modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">评论详情</h3>
+                    <button class="modal-close" onclick="closeCommentModal()">×</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="original-post" id="original-post">
+                        <!-- Original post content will be loaded here -->
+                    </div>
+
+                    <div class="comments-section">
+                        <div class="comments-header">
+                            <h4>全部评论 (<span id="comment-count">0</span>)</h4>
+                        </div>
+                        <div class="comments-list" id="comments-list">
+                            <!-- Comments will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment-form-section">
+                    <form class="comment-form" onsubmit="submitComment(event)">
+                        <textarea
+                            name="comment"
+                            placeholder="写下你的评论..."
+                            rows="3"
+                            required
+                        ></textarea>
+                        <div class="comment-actions">
+                            <button type="submit" class="btn btn-primary btn-sm">发表评论</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/community.js"></script>
+</body>
+</html>

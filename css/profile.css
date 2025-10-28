@@ -1,0 +1,80 @@
+/* Profile Page Styles */
+
+.profile-main {
+  padding: 40px 0;
+  background: var(--surface-color);
+  min-height: calc(100vh - 80px);
+}
+
+.profile-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.profile-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.profile-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-section {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  padding: 40px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .profile-main {
+    padding: 20px 0;
+  }
+
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .profile-section {
+    padding: 25px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

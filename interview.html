@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI面试模拟 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/interview.css">
+</head>
+<body data-page="interview">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+
+                <nav class="nav-menu">
+                    <a href="dashboard.html" class="nav-link">我的面试</a>
+                    <a href="practice.html" class="nav-link">题库练习</a>
+                    <a href="community.html" class="nav-link">社区</a>
+                    <a href="profile.html" class="nav-link">个人设置</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div data-auth class="user-menu">
+                        <div class="user-avatar" data-user-avatar>U</div>
+                        <div class="dropdown hidden">
+                            <a href="profile.html" class="dropdown-item">个人设置</a>
+                            <div class="dropdown-item" onclick="logout()">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="interview-main">
+        <!-- Interview Setup -->
+        <div id="interview-setup" class="interview-setup">
+            <div class="container">
+                <div class="setup-card">
+                    <div class="setup-header">
+                        <h1 class="setup-title">设置面试参数</h1>
+                        <p class="setup-description">请选择面试类型和目标，我们将为您匹配最适合的AI面试官</p>
+                    </div>
+
+                    <form id="setup-form" class="setup-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="interviewType" class="form-label">面试类型 *</label>
+                                <select id="interviewType" name="interviewType" class="form-select" required>
+                                    <option value="">请选择面试类型</option>
+                                    <option value="university">大学申请面试</option>
+                                    <option value="scholarship">奖学金面试</option>
+                                    <option value="visa">签证面试</option>
+                                    <option value="graduate">研究生面试</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="targetCountry" class="form-label">目标国家 *</label>
+                                <select id="targetCountry" name="targetCountry" class="form-select" required>
+                                    <option value="">请选择目标国家</option>
+                                    <option value="美国">美国</option>
+                                    <option value="英国">英国</option>
+                                    <option value="加拿大">加拿大</option>
+                                    <option value="澳大利亚">澳大利亚</option>
+                                    <option value="新加坡">新加坡</option>
+                                    <option value="德国">德国</option>
+                                    <option value="法国">法国</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="targetMajor" class="form-label">专业领域</label>
+                                <select id="targetMajor" name="targetMajor" class="form-select">
+                                    <option value="">请选择专业领域</option>
+                                    <option value="商科">商科</option>
+                                    <option value="工程">工程</option>
+                                    <option value="计算机科学">计算机科学</option>
+                                    <option value="医学">医学</option>
+                                    <option value="法律">法律</option>
+                                    <option value="艺术设计">艺术设计</option>
+                                    <option value="文科">文科</option>
+                                    <option value="理科">理科</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="difficulty" class="form-label">难度等级</label>
+                                <select id="difficulty" name="difficulty" class="form-select">
+                                    <option value="beginner">初级 - 基础问题</option>
+                                    <option value="intermediate" selected>中级 - 综合评估</option>
+                                    <option value="advanced">高级 - 深度挑战</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interviewLanguage" class="form-label">面试语言</label>
+                            <div class="language-options">
+                                <label class="radio-label">
+                                    <input type="radio" name="interviewLanguage" value="english" checked>
+                                    <span class="radio-mark"></span>
+                                    English Only
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="interviewLanguage" value="chinese">
+                                    <span class="radio-mark"></span>
+                                    中文
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="interviewLanguage" value="mixed">
+                                    <span class="radio-mark"></span>
+                                    中英混合
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setup-actions">
+                            <button type="button" onclick="history.back()" class="btn btn-secondary">返回</button>
+                            <button type="submit" class="btn btn-primary btn-lg">开始面试</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interview Session -->
+        <div id="interview-session" class="interview-session hidden">
+            <div class="session-header">
+                <div class="container">
+                    <div class="session-info">
+                        <div class="session-meta">
+                            <span class="session-type" id="session-type">大学申请面试</span>
+                            <span class="session-separator">·</span>
+                            <span class="session-school" id="session-school">美国 · 商科</span>
+                        </div>
+                        <div class="session-timer">
+                            <span class="timer-label">面试时长:</span>
+                            <span class="timer-display" id="timer-display">00:00</span>
+                        </div>
+                    </div>
+                    <div class="session-controls">
+                        <button id="pause-btn" class="control-btn">
+                            <span class="control-icon">⏸</span>
+                            暂停
+                        </button>
+                        <button id="end-btn" class="control-btn end-btn">
+                            <span class="control-icon">⏹</span>
+                            结束面试
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-content">
+                <div class="container">
+                    <div class="interview-layout">
+                        <!-- AI Interviewer -->
+                        <div class="interviewer-panel">
+                            <div class="ai-interviewer">
+                                <div class="ai-avatar-container">
+                                    <div class="ai-avatar" id="ai-avatar">
+                                        <div class="avatar-face">🤖</div>
+                                        <div class="speaking-indicator hidden" id="speaking-indicator">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-info">
+                                    <h3 class="ai-name">Dr. Smith</h3>
+                                    <p class="ai-role">Harvard Admission Officer</p>
+                                </div>
+                            </div>
+
+                            <div class="current-question">
+                                <div class="question-header">
+                                    <span class="question-number">Question 1</span>
+                                </div>
+                                <div class="question-text" id="current-question">
+                                    Hello! Welcome to your interview. I'm excited to learn more about you.
+                                    Let's start with a simple question: Can you tell me a bit about yourself and why you're interested in studying business?
+                                </div>
+                                <div class="question-subtitle" id="question-subtitle">
+                                    Take your time and speak naturally. I'm listening.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Response Panel -->
+                        <div class="response-panel">
+                            <div class="user-video">
+                                <video id="user-video" autoplay muted></video>
+                                <div class="video-placeholder" id="video-placeholder">
+                                    <div class="placeholder-icon">📹</div>
+                                    <p>启用摄像头以获得最佳面试体验</p>
+                                    <button id="enable-camera" class="btn btn-primary btn-sm">启用摄像头</button>
+                                </div>
+                            </div>
+
+                            <div class="response-controls">
+                                <div class="mic-section">
+                                    <button id="mic-toggle" class="mic-btn">
+                                        <span class="mic-icon">🎤</span>
+                                    </button>
+                                    <div class="mic-status">
+                                        <span class="status-text" id="mic-status">准备就绪</span>
+                                        <div class="audio-level" id="audio-level">
+                                            <div class="level-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="transcript-section">
+                                    <div class="transcript-header">
+                                        <span class="transcript-label">实时转录</span>
+                                    </div>
+                                    <div class="transcript-content" id="transcript">
+                                        <p class="transcript-placeholder">开始说话，你的回答会在这里显示...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress & Feedback -->
+                    <div class="interview-progress">
+                        <div class="progress-info">
+                            <span class="progress-label">面试进度</span>
+                            <span class="progress-text" id="progress-text">1 / 5 questions</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Feedback -->
+                    <div class="realtime-feedback hidden" id="realtime-feedback">
+                        <div class="feedback-header">
+                            <span class="feedback-label">实时反馈</span>
+                        </div>
+                        <div class="feedback-items">
+                            <div class="feedback-item positive">
+                                <span class="feedback-icon">👍</span>
+                                <span class="feedback-text">语音清晰度很好</span>
+                            </div>
+                            <div class="feedback-item neutral">
+                                <span class="feedback-icon">💡</span>
+                                <span class="feedback-text">建议保持眼神接触</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interview Completed -->
+        <div id="interview-completed" class="interview-completed hidden">
+            <div class="container">
+                <div class="completion-card">
+                    <div class="completion-icon">🎉</div>
+                    <h2 class="completion-title">面试完成！</h2>
+                    <p class="completion-message">
+                        恭喜你完成了这次面试模拟！我们正在生成你的详细反馈报告，
+                        这通常需要30秒左右的时间。
+                    </p>
+
+                    <div class="completion-stats">
+                        <div class="stat">
+                            <span class="stat-label">面试时长</span>
+                            <span class="stat-value" id="final-duration">12:34</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">回答问题</span>
+                            <span class="stat-value" id="final-questions">5 题</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">初步评分</span>
+                            <span class="stat-value" id="preliminary-score">8.5</span>
+                        </div>
+                    </div>
+
+                    <div class="report-generation">
+                        <div class="generation-status">
+                            <div class="loading-spinner"></div>
+                            <span class="generation-text" id="generation-text">正在生成详细报告...</span>
+                        </div>
+                        <div class="generation-progress">
+                            <div class="generation-bar" id="generation-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="completion-actions">
+                        <button onclick="location.href='dashboard.html'" class="btn btn-secondary">返回主页</button>
+                        <button id="view-report-btn" class="btn btn-primary" disabled>查看详细报告</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/interview.js"></script>
+</body>
+</html>

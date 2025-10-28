@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - SpeakOffer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body data-page="register">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">SpeakOffer</a>
+                <div class="header-actions">
+                    <a href="login.html" class="btn btn-secondary">已有账号？登录</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Form -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="auth-title">创建你的账号</h1>
+                <p class="auth-description">加入SpeakOffer，开始你的留学面试准备</p>
+            </div>
+
+            <form data-form="register" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">姓名</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class="form-input"
+                            placeholder="请输入姓名"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">邮箱地址 *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-input"
+                            placeholder="请输入邮箱地址"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password" class="form-label">密码 *</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-input"
+                            placeholder="请输入密码（至少8位）"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">确认密码 *</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            class="form-input"
+                            placeholder="请再次输入密码"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="targetCountry" class="form-label">目标留学国家</label>
+                        <select id="targetCountry" name="targetCountry" class="form-select">
+                            <option value="">请选择目标国家</option>
+                            <option value="美国">美国</option>
+                            <option value="英国">英国</option>
+                            <option value="加拿大">加拿大</option>
+                            <option value="澳大利亚">澳大利亚</option>
+                            <option value="新加坡">新加坡</option>
+                            <option value="德国">德国</option>
+                            <option value="法国">法国</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="targetMajor" class="form-label">目标专业</label>
+                        <select id="targetMajor" name="targetMajor" class="form-select">
+                            <option value="">请选择目标专业</option>
+                            <option value="商科">商科</option>
+                            <option value="工程">工程</option>
+                            <option value="计算机科学">计算机科学</option>
+                            <option value="医学">医学</option>
+                            <option value="法律">法律</option>
+                            <option value="艺术设计">艺术设计</option>
+                            <option value="文科">文科</option>
+                            <option value="理科">理科</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        我已阅读并同意
+                        <a href="#" class="terms-link">服务条款</a>
+                        和
+                        <a href="#" class="terms-link">隐私政策</a>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="subscribeNewsletter">
+                        <span class="checkmark"></span>
+                        订阅邮件通知，获取最新面试技巧和留学资讯
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg">免费注册</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>或使用社交账号注册</span>
+            </div>
+
+            <div class="social-login">
+                <button class="btn btn-social btn-wechat">
+                    <span class="social-icon">💬</span>
+                    微信注册
+                </button>
+                <button class="btn btn-social btn-qq">
+                    <span class="social-icon">🐧</span>
+                    QQ注册
+                </button>
+                <button class="btn btn-social btn-google">
+                    <span class="social-icon">🌐</span>
+                    Google注册
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                <p>已有账号？<a href="login.html" class="auth-link">立即登录</a></p>
+            </div>
+        </div>
+
+        <div class="auth-benefits">
+            <h3>立即开始免费试用</h3>
+            <div class="benefit-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">
+                        <h4>免费试用</h4>
+                        <p>注册即可免费体验3次AI面试</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎓</div>
+                    <div class="benefit-text">
+                        <h4>50,000+成功案例</h4>
+                        <p>帮助学生成功进入梦想院校</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-text">
+                        <h4>提升95%面试成功率</h4>
+                        <p>科学的训练方法，显著提升表现</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
